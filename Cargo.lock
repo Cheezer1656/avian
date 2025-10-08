@@ -3520,9 +3520,9 @@ dependencies = [
 
 [[package]]
 name = "parry3d"
-version = "0.24.0"
+version = "0.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "29a58098398ec9b65abcd8c04501430bd273e3bb48ef3664d4d4e0eb7a44029d"
+checksum = "e6f02d098003d45982f41f9884941438e7e90eadf5e542389e7188e5b404d5ab"
 dependencies = [
  "approx",
  "arrayvec",
@@ -3542,6 +3542,7 @@ dependencies = [
  "rayon",
  "rstar",
  "serde",
+ "serde_arrays",
  "simba",
  "slab",
  "smallvec",
@@ -3552,9 +3553,9 @@ dependencies = [
 
 [[package]]
 name = "parry3d-f64"
-version = "0.24.0"
+version = "0.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "93bfd7cfba14c8b6e28995966e8302fa4ec374023f96e6ca920e599d7851fe90"
+checksum = "003e47e8173eb6fca6427a14e29f835b5aacfa5ba89bc5632641cf4748985e7c"
 dependencies = [
  "approx",
  "arrayvec",
@@ -3573,6 +3574,7 @@ dependencies = [
  "rayon",
  "rstar",
  "serde",
+ "serde_arrays",
  "simba",
  "slab",
  "smallvec",
@@ -4120,6 +4122,15 @@ checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
 dependencies = [
  "serde_core",
  "serde_derive",
+]
+
+[[package]]
+name = "serde_arrays"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "94a16b99c5ea4fe3daccd14853ad260ec00ea043b2708d1fd1da3106dcd8d9df"
+dependencies = [
+ "serde",
 ]
 
 [[package]]
