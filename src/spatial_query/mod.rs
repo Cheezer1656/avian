@@ -224,13 +224,13 @@ impl Plugin for SpatialQueryPlugin {
 ))]
 pub fn update_spatial_query_pipeline(
     mut spatial_query: SpatialQuery,
-    mut diagnostics: ResMut<SpatialQueryDiagnostics>,
+    // mut diagnostics: ResMut<SpatialQueryDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
     spatial_query.update_pipeline();
 
-    diagnostics.update_pipeline = start.elapsed();
+    // diagnostics.update_pipeline = start.elapsed();
 }
 
 type RayCasterPositionQueryComponents = (
@@ -400,7 +400,7 @@ fn update_shape_caster_positions(
 fn raycast(
     mut rays: Query<(Entity, &mut RayCaster, &mut RayHits)>,
     spatial_query: SpatialQuery,
-    mut diagnostics: ResMut<SpatialQueryDiagnostics>,
+    // mut diagnostics: ResMut<SpatialQueryDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -412,14 +412,14 @@ fn raycast(
         }
     }
 
-    diagnostics.update_ray_casters = start.elapsed();
+    // diagnostics.update_ray_casters = start.elapsed();
 }
 
 #[cfg(any(feature = "parry-f32", feature = "parry-f64"))]
 fn shapecast(
     mut shape_casters: Query<(Entity, &ShapeCaster, &mut ShapeHits)>,
     spatial_query: SpatialQuery,
-    mut diagnostics: ResMut<SpatialQueryDiagnostics>,
+    // mut diagnostics: ResMut<SpatialQueryDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -431,5 +431,5 @@ fn shapecast(
         }
     }
 
-    diagnostics.update_shape_casters = start.elapsed();
+    // diagnostics.update_shape_casters = start.elapsed();
 }

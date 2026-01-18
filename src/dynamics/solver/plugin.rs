@@ -363,7 +363,7 @@ pub(super) struct BodyQuery {
 fn prepare_contact_constraints(
     contact_graph: Res<ContactGraph>,
     mut constraint_graph: ResMut<ConstraintGraph>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
     bodies: Query<BodyQuery, RigidBodyActiveFilter>,
     narrow_phase_config: Res<NarrowPhaseConfig>,
     contact_softness: Res<ContactSoftnessCoefficients>,
@@ -439,12 +439,12 @@ fn prepare_contact_constraints(
         }
     });
 
-    diagnostics.prepare_constraints += start.elapsed();
-    diagnostics.contact_constraint_count = constraint_graph
-        .colors
-        .iter()
-        .map(|color| color.contact_constraints.len())
-        .sum::<usize>() as u32;
+    // diagnostics.prepare_constraints += start.elapsed();
+    // diagnostics.contact_constraint_count = constraint_graph
+    //     .colors
+    //     .iter()
+    //     .map(|color| color.contact_constraints.len())
+    //     .sum::<usize>() as u32;
 }
 
 /// Warm starts the solver by applying the impulses from the previous frame or substep.
@@ -454,7 +454,7 @@ fn warm_start(
     bodies: Query<(&mut SolverBody, &SolverBodyInertia)>,
     mut constraint_graph: ResMut<ConstraintGraph>,
     solver_config: Res<SolverConfig>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -478,7 +478,7 @@ fn warm_start(
         });
     }
 
-    diagnostics.warm_start += start.elapsed();
+    // diagnostics.warm_start += start.elapsed();
 }
 
 fn warm_start_internal(
@@ -534,7 +534,7 @@ fn solve_contacts<const USE_BIAS: bool>(
     solver_config: Res<SolverConfig>,
     length_unit: Res<PhysicsLengthUnit>,
     time: Res<Time>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -571,11 +571,11 @@ fn solve_contacts<const USE_BIAS: bool>(
         });
     }
 
-    if USE_BIAS {
-        diagnostics.solve_constraints += start.elapsed();
-    } else {
-        diagnostics.relax_velocities += start.elapsed();
-    }
+    // if USE_BIAS {
+    //     diagnostics.solve_constraints += start.elapsed();
+    // } else {
+    //     diagnostics.relax_velocities += start.elapsed();
+    // }
 }
 
 fn solve_contacts_internal<const USE_BIAS: bool>(
@@ -632,7 +632,7 @@ fn solve_restitution(
     mut constraint_graph: ResMut<ConstraintGraph>,
     solver_config: Res<SolverConfig>,
     length_unit: Res<PhysicsLengthUnit>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -669,7 +669,7 @@ fn solve_restitution(
         });
     }
 
-    diagnostics.apply_restitution += start.elapsed();
+    // diagnostics.apply_restitution += start.elapsed();
 }
 
 fn solve_restitution_internal(

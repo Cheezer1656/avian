@@ -261,7 +261,7 @@ fn writeback_solver_bodies(
         &mut LinearVelocity,
         &mut AngularVelocity,
     )>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = bevy::platform::time::Instant::now();
 
@@ -280,7 +280,7 @@ fn writeback_solver_bodies(
         },
     );
 
-    diagnostics.finalize += start.elapsed();
+    // diagnostics.finalize += start.elapsed();
 }
 
 #[cfg(feature = "3d")]

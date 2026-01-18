@@ -268,7 +268,7 @@ pub fn pre_process_velocity_increments(
     )>,
     gravity: Res<Gravity>,
     time: Res<Time<Substeps>>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -309,13 +309,13 @@ pub fn pre_process_velocity_increments(
         },
     );
 
-    diagnostics.update_velocity_increments += start.elapsed();
+    // diagnostics.update_velocity_increments += start.elapsed();
 }
 
 /// Clears the velocity increments of bodies after the substepping loop.
 fn clear_velocity_increments(
     mut bodies: Query<&mut VelocityIntegrationData, With<SolverBody>>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -324,7 +324,7 @@ fn clear_velocity_increments(
         integration.angular_increment = AngularVector::ZERO;
     });
 
-    diagnostics.update_velocity_increments += start.elapsed();
+    // diagnostics.update_velocity_increments += start.elapsed();
 }
 
 #[derive(QueryData)]
@@ -345,7 +345,7 @@ pub fn integrate_velocities(
         VelocityIntegrationQuery,
         (RigidBodyActiveFilter, Without<CustomVelocityIntegration>),
     >,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
     #[cfg(feature = "3d")] time: Res<Time>,
 ) {
     let start = crate::utils::Instant::now();
@@ -387,7 +387,7 @@ pub fn integrate_velocities(
         }
     });
 
-    diagnostics.integrate_velocities += start.elapsed();
+    // diagnostics.integrate_velocities += start.elapsed();
 }
 
 /// Applies the effects of gyroscopic motion to the given angular velocity.

@@ -67,25 +67,25 @@ fn diagnostic_entity_counts(
     distance_joint_query: Query<&DistanceJoint>,
     revolute_joint_query: Query<&RevoluteJoint>,
     #[cfg(feature = "3d")] spherical_joint_query: Query<&SphericalJoint>,
-    mut diagnostics: ResMut<PhysicsEntityDiagnostics>,
+    // mut diagnostics: ResMut<PhysicsEntityDiagnostics>,
 ) {
-    diagnostics.dynamic_body_count = rigid_bodies_query
-        .iter()
-        .filter(|rb| rb.is_dynamic())
-        .count() as u32;
-    diagnostics.kinematic_body_count = rigid_bodies_query
-        .iter()
-        .filter(|rb| rb.is_kinematic())
-        .count() as u32;
-    diagnostics.static_body_count = rigid_bodies_query
-        .iter()
-        .filter(|rb| rb.is_static())
-        .count() as u32;
-    diagnostics.collider_count = colliders_query.iter().count() as u32;
-    diagnostics.joint_count = fixed_joint_query.iter().count() as u32
-        + prismatic_joint_query.iter().count() as u32
-        + distance_joint_query.iter().count() as u32
-        + revolute_joint_query.iter().count() as u32;
+    // diagnostics.dynamic_body_count = rigid_bodies_query
+    //     .iter()
+    //     .filter(|rb| rb.is_dynamic())
+    //     .count() as u32;
+    // diagnostics.kinematic_body_count = rigid_bodies_query
+    //     .iter()
+    //     .filter(|rb| rb.is_kinematic())
+    //     .count() as u32;
+    // diagnostics.static_body_count = rigid_bodies_query
+    //     .iter()
+    //     .filter(|rb| rb.is_static())
+    //     .count() as u32;
+    // diagnostics.collider_count = colliders_query.iter().count() as u32;
+    // diagnostics.joint_count = fixed_joint_query.iter().count() as u32
+    //     + prismatic_joint_query.iter().count() as u32
+    //     + distance_joint_query.iter().count() as u32
+    //     + revolute_joint_query.iter().count() as u32;
     #[cfg(feature = "3d")]
     {
         diagnostics.joint_count += spherical_joint_query.iter().count() as u32;

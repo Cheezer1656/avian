@@ -149,7 +149,7 @@ pub fn update_hits(
     backend_settings: Res<PhysicsPickingSettings>,
     spatial_query: SpatialQuery,
     mut output_events: MessageWriter<PointerHits>,
-    mut diagnostics: ResMut<PhysicsPickingDiagnostics>,
+    // // mut diagnostics: ResMut<PhysicsPickingDiagnostics>,
 ) {
     let start_time = crate::utils::Instant::now();
 
@@ -235,5 +235,5 @@ pub fn update_hits(
         }
     }
 
-    diagnostics.update_hits = start_time.elapsed();
+    // diagnostics.update_hits = start_time.elapsed();
 }

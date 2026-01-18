@@ -74,11 +74,11 @@ impl_diagnostic_paths! {
 }
 
 fn increment_physics_step_number(
-    mut diagnostics: ResMut<PhysicsTotalDiagnostics>,
+    // mut diagnostics: ResMut<PhysicsTotalDiagnostics>,
     mut step: Local<u32>,
 ) {
     *step += 1;
-    diagnostics.step_number = *step;
+    // diagnostics.step_number = *step;
 }
 
 /// The time at which the physics step started.
@@ -92,14 +92,16 @@ fn update_physics_step_start(mut start: ResMut<PhysicsStepStart>) {
 
 fn update_step_time(
     start: Res<PhysicsStepStart>,
-    mut diagnostics: ResMut<PhysicsTotalDiagnostics>,
+    // mut diagnostics: ResMut<PhysicsTotalDiagnostics>,
 ) {
-    diagnostics.step_time = start.0.elapsed();
+    // diagnostics.step_time = start.0.elapsed();
 }
 
 /// Updates the time spent on the physics step not covered by other diagnostics.
 #[cfg(feature = "bevy_diagnostic")]
-fn update_miscellaneous_physics_timer(mut diagnostics: Diagnostics, store: Res<DiagnosticsStore>) {
+fn update_miscellaneous_physics_timer(
+    // mut diagnostics: Diagnostics,
+    store: Res<DiagnosticsStore>) {
     // Get the total time spent on the physics step.
     let total = store
         .get(PhysicsTotalDiagnostics::STEP_TIME)
@@ -130,8 +132,8 @@ fn update_miscellaneous_physics_timer(mut diagnostics: Diagnostics, store: Res<D
     // If the total time spent on the physics step is greater than the time covered by other diagnostics,
     // add a miscellaneous diagnostic for the difference.
     if timed > 0.0 {
-        diagnostics.add_measurement(PhysicsTotalDiagnostics::MISCELLANEOUS, || {
-            (total - timed).max(0.0)
-        });
+        // diagnostics.add_measurement(PhysicsTotalDiagnostics::MISCELLANEOUS, || {
+        //     (total - timed).max(0.0)
+        // });
     }
 }

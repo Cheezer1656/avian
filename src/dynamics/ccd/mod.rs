@@ -527,7 +527,7 @@ fn solve_swept_ccd(
     time: Res<Time>,
     contact_graph: Res<ContactGraph>,
     narrow_phase_config: Res<NarrowPhaseConfig>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -683,7 +683,7 @@ fn solve_swept_ccd(
         }
     }
 
-    diagnostics.swept_ccd += start.elapsed();
+    // diagnostics.swept_ccd += start.elapsed();
 }
 
 /// Computes the time of impact for the motion of two objects for Continuous Collision Detection.
