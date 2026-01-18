@@ -469,7 +469,7 @@ fn clamp_velocities(
         Query<(&mut SolverBody, &MaxLinearSpeed)>,
         Query<(&mut SolverBody, &MaxAngularSpeed)>,
     )>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -496,14 +496,14 @@ fn clamp_velocities(
         }
     });
 
-    diagnostics.integrate_velocities += start.elapsed();
+    // diagnostics.integrate_velocities += start.elapsed();
 }
 
 /// Integrates the positions of bodies based on their velocities and the time step.
 pub fn integrate_positions(
     mut solver_bodies: Query<&mut SolverBody, Without<CustomPositionIntegration>>,
     time: Res<Time>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -531,7 +531,7 @@ pub fn integrate_positions(
         }
     });
 
-    diagnostics.integrate_positions += start.elapsed();
+    // diagnostics.integrate_positions += start.elapsed();
 }
 
 #[cfg(test)]

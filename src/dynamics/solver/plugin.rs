@@ -722,7 +722,7 @@ fn solve_restitution_internal(
 fn store_contact_impulses(
     mut contact_graph: ResMut<ContactGraph>,
     mut constraint_graph: ResMut<ConstraintGraph>,
-    mut diagnostics: ResMut<SolverDiagnostics>,
+    // mut diagnostics: ResMut<SolverDiagnostics>,
 ) {
     let start = crate::utils::Instant::now();
 
@@ -751,7 +751,7 @@ fn store_contact_impulses(
         }
     }
 
-    diagnostics.store_impulses += start.elapsed();
+    // diagnostics.store_impulses += start.elapsed();
 }
 
 /// Applies velocity corrections caused by joint damping.
