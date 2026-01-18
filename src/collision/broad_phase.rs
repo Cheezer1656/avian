@@ -350,7 +350,7 @@ fn collect_collision_pairs<H: CollisionHooks>(
     joint_graph: Res<JointGraph>,
     hooks: StaticSystemParam<H>,
     mut commands: Commands,
-    mut diagnostics: ResMut<CollisionDiagnostics>,
+//    mut diagnostics: ResMut<CollisionDiagnostics>,
 ) where
     for<'w, 's> SystemParamItem<'w, 's, H>: CollisionHooks,
 {
@@ -364,7 +364,7 @@ fn collect_collision_pairs<H: CollisionHooks>(
         &mut commands,
     );
 
-    diagnostics.broad_phase = start.elapsed();
+//    diagnostics.broad_phase = start.elapsed();
 }
 
 /// Sorts the entities by their minimum extents along an axis and collects the entity pairs that have intersecting AABBs.
