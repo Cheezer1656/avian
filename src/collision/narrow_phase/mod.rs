@@ -277,7 +277,7 @@ fn update_narrow_phase<C: AnyCollider, H: CollisionHooks + 'static>(
     hooks: StaticSystemParam<H>,
     context: StaticSystemParam<C::Context>,
     mut commands: ParallelCommands,
-    mut diagnostics: ResMut<CollisionDiagnostics>,
+//    mut diagnostics: ResMut<CollisionDiagnostics>,
 ) where
     for<'w, 's> SystemParamItem<'w, 's, H>: CollisionHooks,
 {
@@ -292,8 +292,8 @@ fn update_narrow_phase<C: AnyCollider, H: CollisionHooks + 'static>(
         &mut commands,
     );
 
-    diagnostics.narrow_phase = start.elapsed();
-    diagnostics.contact_count = narrow_phase.contact_graph.edges.edge_count() as u32;
+    // diagnostics.narrow_phase = start.elapsed();
+    // diagnostics.contact_count = narrow_phase.contact_graph.edges.edge_count() as u32;
 }
 
 #[derive(SystemParam)]
